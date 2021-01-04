@@ -38,6 +38,11 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
     <title>登录|学生成绩管理系统</title>
     <meta name="keywords" content="学生成绩管理系统" />
+    <style>
+      #vcodeImg {
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
     <div class="header" style="padding: 0">
@@ -63,7 +68,6 @@ pageEncoding="UTF-8"%>
             >
             <div class="formControls col-8">
               <input
-                id=""
                 name="account"
                 type="text"
                 placeholder="账户"
@@ -77,7 +81,6 @@ pageEncoding="UTF-8"%>
             >
             <div class="formControls col-8">
               <input
-                id=""
                 name="password"
                 type="password"
                 placeholder="密码"
@@ -103,15 +106,15 @@ pageEncoding="UTF-8"%>
           </div>
 
           <div class="mt-20 skin-minimal" style="text-align: center">
-            <div class="radio-box">
+            <div class="radio-box" tabindex="0">
               <input type="radio" id="radio-2" name="type" checked value="2" />
               <label for="radio-1">学生</label>
             </div>
-            <div class="radio-box">
+            <div class="radio-box" tabindex="0">
               <input type="radio" id="radio-3" name="type" value="3" />
-              <label for="radio-2">老师</label>
+              <label for="radio-2">教师</label>
             </div>
-            <div class="radio-box">
+            <div class="radio-box" tabindex="0">
               <input type="radio" id="radio-1" name="type" value="1" />
               <label for="radio-3">管理员</label>
             </div>
@@ -131,6 +134,82 @@ pageEncoding="UTF-8"%>
       </div>
     </div>
     <div class="footer">Copyright &nbsp;</div>
-    <script src="userLogin.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        //点击图片切换验证码
+        $("#vcodeImg").click(function () {
+          this.src = "LoginServlet?method=GetVcode&t=" + new Date().getTime();
+        });
+
+        //登录
+        $("#submitBtn").click(function () {
+          if (
+            $("#radio-2").attr("checked") &&
+            "${systemInfo.forbidStudent}" == 1
+          ) {
+            $.messager.alert("消息提醒", "学生暂不能登录系统！", "warning");
+            return;
+          }
+          if (
+            $("#radio-3").attr("checked") &&
+            "${systemInfo.forbidTeacher}" == 1
+          ) {
+            $.messager.alert("消息提醒", "教师暂不能登录系统！", "warning");
+            return;
+          }
+
+          var data = $("#form").serialize();
+          $.ajax({
+            type: "post",
+            url: "LoginServlet?method=Login",
+            data: data,
+            dataType: "text", //返回数据类型
+            success: function (msg) {
+              if ("vcodeError" == msg) {
+                $.messager.alert("消息提醒", "验证码错误!", "warning");
+                $("#vcodeImg").click(); //切换验证码
+                $("input[name='vcode']").val(""); //清空验证码输入框
+              } else if ("loginError" == msg) {
+                $.messager.alert("消息提醒", "用户名或密码错误!", "warning");
+                $("#vcodeImg").click(); //切换验证码
+                $("input[name='vcode']").val(""); //清空验证码输入框
+              } else if ("admin" == msg) {
+                window.location.href = "SystemServlet?method=toAdminView";
+              } else if ("student" == msg) {
+                window.location.href = "SystemServlet?method=toStudentView";
+              } else if ("teacher" == msg) {
+                window.location.href = "SystemServlet?method=toTeacherView";
+              }
+            },
+          });
+        });
+
+        //设置单选框
+        $(".skin-minimal input").iCheck({
+          radioClass: "iradio-blue",
+          increaseArea: "25%",
+        });
+
+        //设置 学生/教师/管理员 tab可选
+        $(".radio-box").each(function (index) {
+          $(this).on("focus", () => {
+            $(this).find("input").attr("checked", true);
+          });
+        });
+
+        //enter 提交表单
+        $(document).keydown(function (event) {
+          if (event.keyCode === 13) {
+            if ($(".messager-window").length !== 0) {
+              $(".window-mask").remove();
+              $(".window-shadow").remove();
+              $(".messager-window").remove();
+            } else {
+              $("#submitBtn").click();
+            }
+          }
+        });
+      });
+    </script>
   </body>
 </html>
