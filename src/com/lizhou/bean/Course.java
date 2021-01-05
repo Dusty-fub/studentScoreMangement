@@ -1,15 +1,10 @@
 package com.lizhou.bean;
 
-/**
- * 课程类
- * @author bojiangzhou
- *
- */
 public class Course {
 	
-	private int id; //ID
+	private int id; 
 	
-	private String name; //名称
+	private String name; 
 
 	public int getId() {
 		return id;

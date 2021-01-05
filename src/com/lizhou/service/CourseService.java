@@ -8,6 +8,7 @@ import java.util.Map;
 
 import com.lizhou.bean.Clazz;
 import com.lizhou.bean.Course;
+import com.lizhou.bean.CourseItem;
 import com.lizhou.bean.Grade;
 import com.lizhou.bean.Page;
 import com.lizhou.bean.Student;
@@ -24,7 +25,6 @@ import net.sf.json.JsonConfig;
 
 /**
  * 课程服务层
- * @author bojiangzhou
  *
  */
 public class CourseService {
@@ -33,21 +33,28 @@ public class CourseService {
 	
 	/**
 	 * 获取所有课程
+	 * 
 	 * @return
 	 */
-	public String getCourseList(String gradeid){
+	public String getCourseList(String gradeid, String classId) {
 		List<Object> list;
-		if(StringTool.isEmpty(gradeid)){
+		if (StringTool.isEmpty(gradeid) && StringTool.isEmpty(classId)) {
 			list = dao.getList(Course.class, "SELECT * FROM course");
-		} else{
-			list = dao.getList(Course.class, 
-					"SELECT c.* FROM course c, grade_course gc WHERE c.id=gc.courseid AND gc.gradeid=?", 
-					new Object[]{Integer.parseInt(gradeid)});
+		} else if (StringTool.isEmpty(classId)) {
+			list = dao.getList(Course.class,
+					"SELECT c.* FROM course c, grade_course gc WHERE c.id=gc.courseid AND gc.gradeid=?",
+					new Object[] { Integer.parseInt(gradeid) });
+		} else {
+			list = dao.getList(Course.class, "SELECT ngc.* FROM "
+					+ "(SELECT c.* FROM course c, grade_course gc WHERE c.id=gc.courseid AND gc.gradeid=?) ngc "
+					+ "LEFT JOIN (SELECT cct.courseid FROM clazz_course_teacher cct WHERE cct.gradeid =? AND cct.clazzid=?) ncct "
+					+ "ON ngc.id = ncct.courseid " + "WHERE ncct.courseid is NULL",
+					new Object[] { Integer.parseInt(gradeid), Integer.parseInt(gradeid), Integer.parseInt(classId) });
 		}
-		//json化
-        String result = JSONArray.fromObject(list).toString();
-        
-        return result;
+
+		String result = JSONArray.fromObject(list).toString();
+
+		return result;
 	}
 
 	/**

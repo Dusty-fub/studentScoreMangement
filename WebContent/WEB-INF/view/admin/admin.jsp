@@ -102,22 +102,7 @@ pageEncoding="UTF-8"%>
     </script>
   </head>
   <body class="easyui-layout" style="overflow-y: hidden" scroll="no">
-    <noscript>
-      <div
-        style="
-          position: absolute;
-          z-index: 100000;
-          height: 2046px;
-          top: 0px;
-          left: 0px;
-          width: 100%;
-          background: white;
-          text-align: center;
-        "
-      >
-        <img src="images/noscript.gif" alt="抱歉，请开启脚本支持！" />
-      </div>
-    </noscript>
+    <!-- images/layout-browser-hd-bg.gif 少图片 -->
     <div
       region="north"
       split="true"
@@ -133,7 +118,7 @@ pageEncoding="UTF-8"%>
       "
     >
       <span style="float: right; padding-right: 20px" class="head"
-        ><span style="color: red; font-weight: bold">${user.name}&nbsp;</span
+        ><span style="font-weight: bold">${user.name}&nbsp;</span
         >您好&nbsp;&nbsp;&nbsp;<a
           href="SystemServlet?method=LoginOut"
           id="loginOut"

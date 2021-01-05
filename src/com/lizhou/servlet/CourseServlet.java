@@ -14,11 +14,6 @@ import com.lizhou.service.CourseService;
 import com.lizhou.service.GradeService;
 import com.lizhou.tools.StringTool;
 
-/**
- * 课程
- * @author bojiangzhou
- *
- */
 public class CourseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
       
@@ -67,8 +62,8 @@ public class CourseServlet extends HttpServlet {
 	
 	private void courseList(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String gradeid = request.getParameter("gradeid");
-		
-		String result = service.getCourseList(gradeid);
+		String classId = request.getParameter("classId");
+		String result = service.getCourseList(gradeid,classId);
 		//返回数据
         response.getWriter().write(result);
 	}

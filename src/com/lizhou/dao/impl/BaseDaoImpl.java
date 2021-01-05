@@ -17,7 +17,6 @@ import com.lizhou.tools.MysqlTool;
 
 /**
  * 基础Dao层
- * @author bojiangzhou
  *
  */
 @SuppressWarnings("unchecked")
