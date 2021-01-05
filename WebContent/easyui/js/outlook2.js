@@ -1,15 +1,12 @@
-﻿
-$(function(){
+﻿$(function(){
 	InitLeftMenu();
 	tabClose();
 	tabCloseEven();
-
-
 })
 
-//初始化左侧
+
 function InitLeftMenu() {
-	$("#nav").accordion({animate:false});
+	$("#nav").accordion({animate:true});
 
     $.each(_menus.menus, function(i, n) {
 		var menulist ='';
@@ -48,6 +45,7 @@ function InitLeftMenu() {
 	var t = panels[0].panel('options').title;
     $('#nav').accordion('select', t);
 }
+
 //获取左侧导航的图标
 function getIcon(menuid){
 	var icon = 'icon ';
@@ -77,14 +75,12 @@ function addTab(subtitle,url,icon){
 	tabClose();
 }
 
-function createFrame(url)
-{
+function createFrame(url){
 	var s = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
 	return s;
 }
 
-function tabClose()
-{
+function tabClose(){
 	/*双击关闭TAB选项卡*/
 	$(".tabs-inner").dblclick(function(){
 		var subtitle = $(this).children(".tabs-closable").text();
@@ -105,8 +101,7 @@ function tabClose()
 	});
 }
 //绑定右键菜单事件
-function tabCloseEven()
-{
+function tabCloseEven(){
 	//刷新
 	$('#mm-tabupdate').click(function(){
 		var currTab = $('#tabs').tabs('getSelected');
@@ -139,7 +134,6 @@ function tabCloseEven()
 	$('#mm-tabcloseright').click(function(){
 		var nextall = $('.tabs-selected').nextAll();
 		if(nextall.length==0){
-			//msgShow('系统提示','后边没有啦~~','error');
 			alert('后边没有啦~~');
 			return false;
 		}
