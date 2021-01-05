@@ -369,6 +369,25 @@ pageEncoding="UTF-8"%>
         });
 
         let gradeId;
+        let classId;
+
+        function reloadCourseSelectList(grade) {
+          $("#add_courseList").combobox("clear");
+
+          let $courseOptions = $("#add_courseList").combobox("options");
+
+          if (arguments.length === 1) {
+            $courseOptions.queryParams = {
+              gradeid: grade,
+            };
+          } else {
+            $courseOptions.queryParams = {
+              gradeid: gradeId,
+              classId,
+            };
+          }
+          $("#add_courseList").combobox("reload");
+        }
 
         $("#add_gradeList").combobox({
           url: "GradeServlet?method=GradeList&t=" + new Date().getTime(),
@@ -381,12 +400,7 @@ pageEncoding="UTF-8"%>
             };
             $("#add_clazzList").combobox("reload");
 
-            //加载该年级下的课程
-            $("#add_courseList").combobox("clear");
-            $("#add_courseList").combobox("options").queryParams = {
-              gradeid: newValue,
-            };
-            $("#add_courseList").combobox("reload");
+            reloadCourseSelectList(newValue);
           },
           onLoadSuccess: function () {
             //默认选择第一条数据
@@ -398,12 +412,8 @@ pageEncoding="UTF-8"%>
         $("#add_clazzList").combobox({
           url: "ClazzServlet?method=ClazzList&t=" + new Date().getTime(),
           onChange: function (newValue, oldValue) {
-            $("#add_courseList").combobox("clear");
-            $("#add_courseList").combobox("options").queryParams = {
-              gradeid: gradeId,
-              classId: newValue,
-            };
-            $("#add_courseList").combobox("reload");
+            classId = newValue;
+            reloadCourseSelectList();
           },
           onLoadSuccess: function () {
             //默认选择第一条数据
@@ -415,9 +425,12 @@ pageEncoding="UTF-8"%>
         $("#add_courseList").combobox({
           url: "CourseServlet?method=CourseList&t=" + new Date().getTime(),
           onLoadSuccess: function () {
-            //默认选择第一条数据
             var data = $(this).combobox("getData");
-            $(this).combobox("setValue", data[0].id);
+            if (data.length === 0) {
+              $(this).combobox("setValue", "");
+            } else {
+              $(this).combobox("setValue", data[0].id);
+            }
           },
         });
 
@@ -508,6 +521,7 @@ pageEncoding="UTF-8"%>
                         //重新刷新页面数据
                         $("#dataList").datagrid("reload");
                         $("#dataList").datagrid("uncheckAll");
+                        reloadCourseSelectList();
                       } else {
                         $.messager.alert("消息提醒", "修改失败!", "warning");
                         return;

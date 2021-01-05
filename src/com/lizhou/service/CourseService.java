@@ -50,6 +50,7 @@ public class CourseService {
 					+ "LEFT JOIN (SELECT cct.courseid FROM clazz_course_teacher cct WHERE cct.gradeid =? AND cct.clazzid=?) ncct "
 					+ "ON ngc.id = ncct.courseid " + "WHERE ncct.courseid is NULL",
 					new Object[] { Integer.parseInt(gradeid), Integer.parseInt(gradeid), Integer.parseInt(classId) });
+
 		}
 
 		String result = JSONArray.fromObject(list).toString();
