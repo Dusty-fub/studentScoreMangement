@@ -12,6 +12,11 @@ pageEncoding="UTF-8"%>
     />
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
     <link rel="stylesheet" type="text/css" href="easyui/css/demo.css" />
+    <style>
+      .pagination-page-list {
+        cursor: pointer;
+      }
+    </style>
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="easyui/js/validateExtends.js"></script>
@@ -164,7 +169,7 @@ pageEncoding="UTF-8"%>
               },
             },
             {
-              text: "添加",
+              text: "确认",
               plain: true,
               iconCls: "icon-user_add",
               handler: function () {
@@ -622,7 +627,33 @@ pageEncoding="UTF-8"%>
         $(".removeBtn").live("click", function () {
           $(this).parents(".chooseTr").remove();
         });
+
+        paginationHoverTip();
       });
+
+      function paginationHoverTip() {
+        $(".pagination-page-list").prop("title", "每页显示记录条数");
+        $(".datagrid-pager.pagination table td:nth-child(3) a").prop(
+          "title",
+          "首页"
+        );
+        $(".datagrid-pager.pagination table td:nth-child(4) a").prop(
+          "title",
+          "上一页"
+        );
+        $(".datagrid-pager.pagination table td:nth-child(10) a").prop(
+          "title",
+          "下一页"
+        );
+        $(".datagrid-pager.pagination table td:nth-child(11) a").prop(
+          "title",
+          "末页"
+        );
+        $(".datagrid-pager.pagination table td:last-child a").prop(
+          "title",
+          "刷新"
+        );
+      }
     </script>
   </head>
   <body>
