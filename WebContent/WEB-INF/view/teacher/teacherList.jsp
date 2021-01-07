@@ -21,8 +21,7 @@ pageEncoding="UTF-8"%>
       $(function () {
         var table;
 
-        //datagrid初始化
-        $("#dataList").datagrid({
+        let initOptions = {
           title: "教师列表",
           iconCls: "icon-more", //图标
           border: true,
@@ -76,24 +75,45 @@ pageEncoding="UTF-8"%>
             ],
           ],
           toolbar: "#toolbar",
-        });
+        };
 
-        //设置分页控件
-        var p = $("#dataList").datagrid("getPager");
-        $(p).pagination({
-          pageSize: 10, //每页显示的记录条数，默认为10
-          pageList: [10, 20, 30, 50, 100], //可以设置每页记录条数的列表
-          beforePageText: "第", //页数文本框前显示的汉字
-          afterPageText: "页    共 {pages} 页",
-          displayMsg: "当前显示 {from} - {to} 条记录   共 {total} 条记录",
-        });
-        //设置工具类按钮
-        $("#add").click(function () {
+        let comboboxCommonOptions = {
+          width: "200",
+          height: "30",
+          valueField: "id",
+          textField: "name",
+          multiple: false, //不可多选
+          editable: false, //不可编辑
+          method: "post",
+        };
+
+        let gradeId;
+        let classId;
+
+        function reloadCourseSelectList(grade) {
+          $("#add_courseList").combobox("clear");
+
+          let $courseOptions = $("#add_courseList").combobox("options");
+
+          if (arguments.length === 1) {
+            $courseOptions.queryParams = {
+              gradeid: grade,
+            };
+          } else {
+            $courseOptions.queryParams = {
+              gradeid: gradeId,
+              classId,
+            };
+          }
+          $("#add_courseList").combobox("reload");
+        }
+
+        function addTeacher() {
           table = $("#addTable");
           $("#addDialog").dialog("open");
-        });
-        //修改
-        $("#edit").click(function () {
+        }
+
+        function editTeacherInfo() {
           table = $("#editTable");
           var selectRows = $("#dataList").datagrid("getSelections");
           if (selectRows.length != 1) {
@@ -101,9 +121,9 @@ pageEncoding="UTF-8"%>
           } else {
             $("#editDialog").dialog("open");
           }
-        });
-        //删除
-        $("#delete").click(function () {
+        }
+
+        function removeTeacher() {
           var selectRows = $("#dataList").datagrid("getSelections");
           var selectLength = selectRows.length;
           if (selectLength == 0) {
@@ -142,7 +162,15 @@ pageEncoding="UTF-8"%>
               }
             );
           }
-        });
+        }
+
+        $("#dataList").datagrid(initOptions);
+
+        $("#dataList").datagrid("getPager").pagination(paginationOptions);
+
+        $("#add").click(addTeacher);
+        $("#edit").click(editTeacherInfo);
+        $("#delete").click(removeTeacher);
 
         //设置添加窗口
         $("#addDialog").dialog({
@@ -359,37 +387,9 @@ pageEncoding="UTF-8"%>
           ],
         });
 
-        //下拉框通用属性
-        $("#add_gradeList, #add_clazzList, #add_courseList").combobox({
-          width: "200",
-          height: "30",
-          valueField: "id",
-          textField: "name",
-          multiple: false, //不可多选
-          editable: false, //不可编辑
-          method: "post",
-        });
-
-        let gradeId;
-        let classId;
-
-        function reloadCourseSelectList(grade) {
-          $("#add_courseList").combobox("clear");
-
-          let $courseOptions = $("#add_courseList").combobox("options");
-
-          if (arguments.length === 1) {
-            $courseOptions.queryParams = {
-              gradeid: grade,
-            };
-          } else {
-            $courseOptions.queryParams = {
-              gradeid: gradeId,
-              classId,
-            };
-          }
-          $("#add_courseList").combobox("reload");
-        }
+        $("#add_gradeList, #add_clazzList, #add_courseList").combobox(
+          comboboxCommonOptions
+        );
 
         $("#add_gradeList").combobox({
           url: "GradeServlet?method=GradeList&t=" + new Date().getTime(),

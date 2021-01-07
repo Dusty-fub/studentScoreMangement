@@ -22,7 +22,6 @@ import com.lizhou.tools.StringTool;
 
 /**
  * 上传照片Servlet
- * @author bojiangzhou
  *
  */
 public class PhotoServlet extends HttpServlet {

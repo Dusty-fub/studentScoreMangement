@@ -1,0 +1,131 @@
+.northRegion {
+  height : 40px;
+  background : #920B12;
+  line-height : 40px;
+  font-size : 20px;
+  color : #FFFFFF;
+  border : none;
+  margin-bottom : 5px;
+}
+.panel.layout-panel.layout-panel-north {
+  background-color : #FFFFFF;
+}
+.northRegion.panel-body.panel-body-noheader.layout-body {
+  box-shadow : 0 1px 3px rgba(18, 18, 18);
+}
+
+.head {
+  padding-right : 70px;
+}
+
+#loginOut {
+  text-decoration : none;
+  position : absolute;
+  transition : font-size 250ms;
+}
+#loginOut:hover {
+  font-size : 13px;
+  color : #FED227;
+}
+
+.southRegion {
+  height : 30px;
+  background : #3D3C3C;
+  border : none;
+}
+
+div.footer {
+  color : #49494A;
+  height : 100%;
+  line-height : 30px;
+}
+
+.westRegion {
+  width : 140px;
+  border : none;
+}
+.panel.layout-panel.layout-panel-west > .panel-header {
+  background : #FFFFFF;
+  border : none;
+  box-shadow : 0 -1px 3px #CCCCCC;
+  padding : 0;
+}
+
+.panel.layout-panel.layout-panel-west > .panel-header > .panel-title {
+  margin : 0 5px;
+  height : 26px;
+  line-height : 26px;
+  border-bottom : 1px solid #CCCCCC;
+}
+
+.panel-tool a {
+  color : #004EA2;
+}
+
+.panel-body {
+  border : none;
+  box-shadow : 0 1px 3px #CCCCCC;
+}
+
+.panel.layout-panel.layout-panel-west {
+  background-color : #FFFFFF;
+  padding : 5px;
+}
+
+.panel.layout-panel.layout-panel-center {
+  background-color : #FFFFFF;
+  padding : 5px;
+}
+.panel.layout-expand.layout-expand-west {
+  background-color : #FFFFFF;
+  padding : 5px;
+}
+
+.panel.layout-panel.layout-panel-west .panel-title {
+  font-size : 14px;
+  font-weight : normal;
+}
+.panel.layout-panel.layout-panel-west .panel-header {
+  background-color : #FFFFFF;
+}
+
+.accordion-header > .panel-tool {
+  right : 20px;
+}
+
+.easyui-accordion.accordion.accordion-noborder.easyui-fluid
+  div.panel:not(:last-child)
+  .panel-body.accordion-body {
+  border-bottom-color : #CCCCCC !important;
+}
+
+.easyui-accordion.accordion.accordion-noborder.easyui-fluid
+  .panel-header.accordion-header {
+  border : none;
+}
+
+.easyui-accordion.accordion.accordion-noborder.easyui-fluid
+  .panel-header.accordion-header::after {
+  content : '';
+  height : 1px;
+  width : 56px;
+  background-color : #AAAAAA;
+  position : absolute;
+  left : 23px;
+  bottom : -5px;
+}
+
+#mainPanle {
+  border : none;
+  background : #EEEEEE;
+  overflow-y : hidden;
+}
+
+.tabs-header.tabs-header-noborder {
+  /* background-color : #DEE1E6; */
+  background-color : #FFFFFF;
+}
+
+.tabs-wrap > .tabs {
+  border-color : transparent;
+}

@@ -47,15 +47,16 @@ public class SystemServlet extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//获取请求的方法
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 获取请求的方法
 		String method = request.getParameter("method");
-		
-		if("AllAccount".equalsIgnoreCase(method)){ //获取所有账号
+
+		if ("AllAccount".equalsIgnoreCase(method)) { // 获取所有账号
 			allAccount(request, response);
-		} else if("EditPasswod".equals(method)){ //修改密码
+		} else if ("EditPasswod".equals(method)) { // 修改密码
 			editPasswod(request, response);
-		} else if("EditSystemInfo".equals(method)){ //修改系统信息
+		} else if ("EditSystemInfo".equals(method)) { // 修改系统信息
 			editSystemInfo(request, response);
 		}
 	}

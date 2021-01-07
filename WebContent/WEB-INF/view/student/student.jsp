@@ -83,9 +83,9 @@ pageEncoding="UTF-8"%>
         >您好&nbsp;&nbsp;&nbsp;<a
           href="SystemServlet?method=LoginOut"
           id="loginOut"
-          >安全退出</a
-        ></span
-      >
+          >安全退出
+        </a>
+      </span>
       <span style="padding-left: 10px; font-size: 16px"
         >SWU学生信息管理系统</span
       >

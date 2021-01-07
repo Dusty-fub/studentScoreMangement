@@ -14,6 +14,7 @@ pageEncoding="UTF-8"%>
       href="easyui/themes/default/easyui.css"
     />
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
+    <link rel="stylesheet" href="css/user.css" />
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="easyui/js/outlook.js"></script>
@@ -64,68 +65,27 @@ pageEncoding="UTF-8"%>
     </script>
   </head>
   <body class="easyui-layout" style="overflow-y: hidden" scroll="no">
-    <noscript>
-      <div
-        style="
-          position: absolute;
-          z-index: 100000;
-          height: 2046px;
-          top: 0px;
-          left: 0px;
-          width: 100%;
-          background: white;
-          text-align: center;
-        "
-      >
-        <img src="images/noscript.gif" alt="抱歉，请开启脚本支持！" />
-      </div>
-    </noscript>
-    <div
-      region="north"
-      split="true"
-      border="false"
-      style="
-        overflow: hidden;
-        height: 30px;
-        background: url(images/layout-browser-hd-bg.gif) #7f99be repeat-x center
-          50%;
-        line-height: 20px;
-        color: #fff;
-        font-family: Verdana, 微软雅黑, 黑体;
-      "
-    >
-      <span style="float: right; padding-right: 20px" class="head"
-        ><span style="color: red; font-weight: bold">${user.name}&nbsp;</span
-        >您好&nbsp;&nbsp;&nbsp;<a
-          href="SystemServlet?method=LoginOut"
-          id="loginOut"
-          >安全退出</a
-        ></span
-      >
-      <span style="padding-left: 10px; font-size: 16px"
-        >SWU学生信息管理系统</span
-      >
+    <div region="north" split="false" class="northRegion">
+      <span style="float: right" class="head">
+        <span style="color: #fff">${user.name}&nbsp;</span>
+        您好&nbsp;&nbsp;&nbsp;
+        <a href="SystemServlet?method=LoginOut" id="loginOut"> 安全退出 </a>
+      </span>
+      <span style="padding-left: 10px; font-size: 20px">学生信息管理系统</span>
     </div>
-    <div region="south" split="true" style="height: 30px; background: #d2e0f2">
-      <div class="footer">Copyright &copy; SWU By 伯姜洲</div>
+    <div region="south" split="false" class="southRegion">
+      <div class="footer">Copyright &copy;</div>
     </div>
     <div
       region="west"
       hide="true"
-      split="true"
+      split="false"
       title="导航菜单"
-      style="width: 180px"
-      id="west"
+      class="westRegion"
     >
-      <div id="nav" class="easyui-accordion" fit="true" border="false">
-        <!--  导航内容 -->
-      </div>
+      <div id="nav" class="easyui-accordion" fit="true" border="false"></div>
     </div>
-    <div
-      id="mainPanle"
-      region="center"
-      style="background: #eee; overflow-y: hidden"
-    >
+    <div id="mainPanle" region="center">
       <div id="tabs" class="easyui-tabs" fit="true" border="false">
         <jsp:include page="/WEB-INF/view/teacher/welcome.jsp" />
       </div>

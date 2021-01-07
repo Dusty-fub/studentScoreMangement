@@ -4,7 +4,7 @@ function insertPage(schoolName, notice) {
   welcome.title = "欢迎使用";
   welcome.style["padding"] = "20px";
   welcome.style["overflow"] = "hidden";
-  welcome.style["color"] = "#d2e0f2";
+  welcome.style["color"] = "#2775b6";
 
   if (arguments.length === 1) {
     noticePart = `<h2>系统环境</h2>
