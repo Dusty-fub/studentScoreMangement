@@ -12,12 +12,11 @@ pageEncoding="UTF-8"%>
     />
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
     <link rel="stylesheet" type="text/css" href="easyui/css/demo.css" />
+    <link rel="stylesheet" href="css/pagination.css" />
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
-    <script
-      type="text/javascript"
-      src="easyui/themes/locale/easyui-lang-zh_CN.js"
-    ></script>
+    <script src="easyui/themes/locale/easyui-lang-zh_CN.js"></script>
+    <script src="js/pagination.js"></script>
     <script type="text/javascript">
       $(function () {
         //datagrid初始化
@@ -400,7 +399,6 @@ pageEncoding="UTF-8"%>
           if (exam.type == 1) {
             clazzid = $("#escoreClazzList").combobox("getValue");
           }
-          //var data = {id: exam.id, gradeid: exam.gradeid, clazzid:clazzid,courseid:exam.courseid, type: exam.type};
 
           var url =
             "ScoreServlet?method=ExportScore&id=" +
@@ -443,6 +441,8 @@ pageEncoding="UTF-8"%>
             $("#escoreList").datagrid("reload");
           },
         });
+
+        paginationHoverTip();
       });
     </script>
   </head>

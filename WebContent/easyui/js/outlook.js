@@ -2,6 +2,8 @@
 	InitLeftMenu();
 	tabClose();
 	tabCloseEven();
+	setLeftMenuPanelBorderBottomColor();
+	
 })
 
 
@@ -76,8 +78,7 @@ function addTab(subtitle,url,icon){
 }
 
 function createFrame(url){
-	var s = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
-	return s;
+	return '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
 }
 
 function tabClose(){
@@ -167,3 +168,9 @@ function tabCloseEven(){
 function msgShow(title, msgString, msgType) {
 	$.messager.alert(title, msgString, msgType);
 }
+
+ function setLeftMenuPanelBorderBottomColor() {
+        $(".panel-body.accordion-body").each(function () {
+          $(this).css({ borderBottomColor: "#fff" });
+        });
+      }
