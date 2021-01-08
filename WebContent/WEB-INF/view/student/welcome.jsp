@@ -8,6 +8,7 @@ pageEncoding="UTF-8"%>
   </head>
   <body>
     <div class="welcomeHtmlMountEl"></div>
+    <div>today, i meet event.</div>
     <script src="js/welcome.js"></script>
     <script>
       insertPage("${systemInfo.schoolName}", "${systemInfo.noticeStudent}");

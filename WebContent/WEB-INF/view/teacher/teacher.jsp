@@ -18,6 +18,7 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="easyui/js/outlook.js"></script>
+
     <script type="text/javascript">
       var _menus = {
         menus: [
@@ -65,14 +66,8 @@ pageEncoding="UTF-8"%>
     </script>
   </head>
   <body class="easyui-layout" style="overflow-y: hidden" scroll="no">
-    <div region="north" split="false" class="northRegion">
-      <span style="float: right" class="head">
-        <span style="color: #fff">${user.name}&nbsp;</span>
-        您好&nbsp;&nbsp;&nbsp;
-        <a href="SystemServlet?method=LoginOut" id="loginOut"> 安全退出 </a>
-      </span>
-      <span style="padding-left: 10px; font-size: 20px">学生信息管理系统</span>
-    </div>
+    <div class="northRegion" region="north" split="false"></div>
+
     <div region="south" split="false" class="southRegion">
       <div class="footer">Copyright &copy;</div>
     </div>
@@ -92,5 +87,9 @@ pageEncoding="UTF-8"%>
     </div>
 
     <iframe width="0" height="0" src="refresh.jsp"></iframe>
+    <script src="js/user.js"></script>
+    <script>
+      insertTopNav("${user.name}");
+    </script>
   </body>
 </html>

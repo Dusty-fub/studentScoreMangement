@@ -18,12 +18,12 @@
   padding-right : 70px;
 }
 
-#loginOut {
+#logout {
   text-decoration : none;
   position : absolute;
   transition : font-size 250ms;
 }
-#loginOut:hover {
+#logout:hover {
   font-size : 13px;
   color : #FED227;
 }
@@ -62,7 +62,7 @@ div.footer {
   color : #004EA2;
 }
 
-.panel-body {
+.panel.layout-panel.layout-panel-west > .panel-body {
   border : none;
   box-shadow : 0 1px 3px #CCCCCC;
 }
@@ -122,10 +122,54 @@ div.footer {
 }
 
 .tabs-header.tabs-header-noborder {
-  /* background-color : #DEE1E6; */
   background-color : #FFFFFF;
 }
 
 .tabs-wrap > .tabs {
   border-color : transparent;
+}
+
+/* 左部边栏 导航菜单右部按钮 */
+.panel.layout-expand.layout-expand-west > .panel-header > .panel-tool {
+  right : 0;
+}
+
+/* 左部边栏收缩后 整体 */
+.panel.layout-expand.layout-expand-west {
+  box-shadow : 0 1px 3px #CCCCCC;
+}
+
+/* 左部边栏收缩后 header及body */
+.panel.layout-expand.layout-expand-west > .panel-header, .panel.layout-expand.layout-expand-west > .panel-body {
+  border : none;
+}
+
+/* 左边边栏 二级子菜单选项 未hover*/
+.panel-body.accordion-body > ul > li > div {
+  padding-left : 20px;
+}
+
+/* 左边边栏 二级子菜单选项 hover*/
+.panel-body.accordion-body > ul > li > .hover {
+  border : none;
+  background-color : #FFFFFF;
+}
+
+/* 左边边栏 二级子菜单选项 hover a标签*/
+.panel-body.accordion-body > ul > li > .hover a {
+  text-decoration : none;
+  color : #FED227;
+}
+
+/* 左边边栏 二级子菜单选项 选中状态*/
+.panel-body.accordion-body > ul > li > .selected {
+  border : none;
+  background-color : #FFFFFF;
+}
+
+/* 底部 footer */
+.panel.layout-panel.layout-panel-south {
+  width : 1366px;
+  left : 0px;
+  top : 637px;
 }
