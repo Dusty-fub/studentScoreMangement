@@ -10,9 +10,9 @@ pageEncoding="UTF-8"%>
       type="text/css"
       href="easyui/themes/default/easyui.css"
     />
-    <link rel="stylesheet" href="css/pagination.css" />
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
     <link rel="stylesheet" type="text/css" href="easyui/css/demo.css" />
+    <link rel="stylesheet" href="css/list.css" />
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="easyui/js/validateExtends.js"></script>
@@ -177,19 +177,11 @@ pageEncoding="UTF-8"%>
 
     <!-- 查看窗口 -->
     <div id="editDialog" style="padding: 10px">
-      <div
-        style="
-          position: absolute;
-          margin-left: 560px;
-          width: 250px;
-          height: 300px;
-          border: 1px solid #eef4ff;
-        "
-      >
+      <div class="viewTeacherPhoto">
         <img
           id="edit_photo"
           alt="照片"
-          style="max-width: 200px; max-height: 400px"
+          style="max-height: 200px"
           title="照片"
           src=""
         />
@@ -231,15 +223,14 @@ pageEncoding="UTF-8"%>
           <tr>
             <td>性别:</td>
             <td>
-              <select
+              <input
                 id="edit_sex"
-                class="easyui-combobox"
-                data-options="editable: false, readonly:true, panelHeight: 50, width: 60, height: 30"
+                style="width: 200px; height: 30px"
+                class="easyui-textbox"
+                data-options="readonly:true"
+                type="text"
                 name="sex"
-              >
-                <option value="男">男</option>
-                <option value="女">女</option>
-              </select>
+              />
             </td>
           </tr>
           <tr>

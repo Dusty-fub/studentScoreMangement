@@ -1,0 +1,35 @@
+/* header body */
+.panel.datagrid.easyui-fluid > .panel-header, .panel.datagrid.easyui-fluid > .panel-body {
+  border : none;
+}
+
+/* 表中 行 */
+.datagrid-view .datagrid-btable tbody tr {
+  cursor : pointer;
+}
+
+.viewTeacherPhoto {
+  position : absolute;
+  margin-left : 560px;
+}
+
+#editForm tbody span.textbox.textbox-readonly {
+  border-color : #CCCCCC;
+}
+
+/* 分页栏 */
+.datagrid-pager.pagination {
+  background-color : #FFFFFF;
+}
+/* 分页栏 每页显示记录条数 */
+.pagination-page-list {
+  cursor : pointer;
+}
+
+/* 成绩登记 科目列 */
+/* #regEscoreToolbar + .datagrid-view
+  .datagrid-header-inner
+  .datagrid-htable
+  .datagrid-cell {
+  width : 170px;
+} */

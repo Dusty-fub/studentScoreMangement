@@ -5,7 +5,7 @@ function insertTopNav(userName) {
   topNav.setAttribute("split", "false");
 
   topNav.innerHTML = `
-                      <span style="float: right; padding-right: 20px" class="head">
+                      <span class="head">
                         <span> ${userName}&nbsp;</span>
                         您好&nbsp;&nbsp;&nbsp;
                         <a href="SystemServlet?method=LoginOut" id="logout"> 安全退出 </a>

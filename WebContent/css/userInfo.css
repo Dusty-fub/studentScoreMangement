@@ -1,0 +1,10 @@
+.textbox.filebox {
+  width : 60px !important;
+}
+
+.textbox.filebox a {
+  opacity : 0;
+}
+.textbox.filebox .textbox-text.validatebox-text.textbox-prompt {
+  width : 55px;
+}

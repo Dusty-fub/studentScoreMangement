@@ -1,3 +1,7 @@
+body {
+  background-color : #FFFFFF;
+}
+
 .northRegion {
   height : 40px;
   background : #920B12;
@@ -14,36 +18,25 @@
   box-shadow : 0 1px 3px rgba(18, 18, 18);
 }
 
-.head {
+/* 顶部导航   右部 */
+span.head {
   padding-right : 70px;
+  float : right;
 }
 
+/* 顶部导航 右部 安全退出 */
 #logout {
   text-decoration : none;
   position : absolute;
   transition : font-size 250ms;
 }
+
+/* 安全退出 hover */
 #logout:hover {
   font-size : 13px;
   color : #FED227;
 }
 
-.southRegion {
-  height : 30px;
-  background : #3D3C3C;
-  border : none;
-}
-
-div.footer {
-  color : #49494A;
-  height : 100%;
-  line-height : 30px;
-}
-
-.westRegion {
-  width : 140px;
-  border : none;
-}
 .panel.layout-panel.layout-panel-west > .panel-header {
   background : #FFFFFF;
   border : none;
@@ -89,10 +82,6 @@ div.footer {
   background-color : #FFFFFF;
 }
 
-.accordion-header > .panel-tool {
-  right : 20px;
-}
-
 .easyui-accordion.accordion.accordion-noborder.easyui-fluid
   div.panel:not(:last-child)
   .panel-body.accordion-body {
@@ -115,18 +104,26 @@ div.footer {
   bottom : -5px;
 }
 
-#mainPanle {
+/* main */
+#mainPanel {
   border : none;
   background : #EEEEEE;
   overflow-y : hidden;
 }
 
-.tabs-header.tabs-header-noborder {
-  background-color : #FFFFFF;
+/* main tab标题 */
+ul.tabs li .tabs-inner {
+  border : none;
 }
 
 .tabs-wrap > .tabs {
   border-color : transparent;
+}
+
+/* 左部边栏 */
+.westRegion {
+  width : 160px;
+  border : none;
 }
 
 /* 左部边栏 导航菜单右部按钮 */
@@ -167,9 +164,27 @@ div.footer {
   background-color : #FFFFFF;
 }
 
+/* 左部边栏 二级子菜单选项  展开图标   */
+.accordion-header > .panel-tool {
+  right : 10px;
+}
+
 /* 底部 footer */
 .panel.layout-panel.layout-panel-south {
   width : 1366px;
   left : 0px;
   top : 637px;
+}
+
+/* 底部 */
+.southRegion {
+  height : 30px;
+  background : #3D3C3C;
+  border : none;
+}
+/* 底部 内部 */
+div.footer {
+  color : #49494A;
+  height : 100%;
+  line-height : 30px;
 }

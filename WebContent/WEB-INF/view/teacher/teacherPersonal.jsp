@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="easyui/themes/default/easyui.css">
 	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="easyui/css/demo.css">
-	
+	<link rel="stylesheet" href="css/userInfo.css">
 	<script type="text/javascript" src="easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="easyui/js/validateExtends.js"></script>
@@ -150,8 +150,8 @@
 		<div style="width: 300px; height: 400px;float: right; margin: 20px 120px 0 0;">
 	    	<img id="user_photo" alt="照片" style="margin-bottom: 30px;display: block;max-width: 250px; max-height: 300px;" title="照片" src="PhotoServlet?method=GetPhoto" />
 	    	<form id="uploadForm" method="post" enctype="multipart/form-data" action="PhotoServlet?method=SetPhoto" target="photo_target">
-	    		<!-- StudentServlet?method=SetPhoto -->
-		    	<input class="easyui-filebox" name="photo" data-options="prompt:'选择照片'" style="width:200px;">
+	    		
+		    	<input class="easyui-filebox" name="photo" data-options="prompt:'选择照片'" >
 		    	<input id="uploadBtn" class="easyui-linkbutton" style="width: 50px; height: 24px;" type="button" value="上传"/>
 		    </form>
 	    </div>   
