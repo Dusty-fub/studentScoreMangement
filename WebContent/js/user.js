@@ -16,26 +16,6 @@ function insertTopNav(userName) {
   document.body.appendChild(topNav);
 }
 
-function insertCenter(role) {
-  let centerRegion = document.createElement("div");
-  centerRegion.id = "mainPanel";
-  centerRegion.setAttribute("region", "center");
-
-  centerRegion.innerHTML = `
-                            <div id="tabs" class="easyui-tabs" fit="true" border="false"></div>
-                            `;
-
-  document.body.appendChild(centerRegion);
-  $.ajax({
-    url: "js/welcomeTemplate.jsp",
-    data: { role },
-    success: function (data) {
-      $("#mainPanel>#tabs").prepend(data);
-      console.log("ajax, ", role);
-    },
-  });
-}
-
 function insertFooter() {
   let footerEl = document.createElement("div");
   footerEl.className = "southRegion";
@@ -64,9 +44,8 @@ function insertLeftSideMenu() {
   document.body.appendChild(leftSideMenuEl);
 }
 
-function insert(userName, role) {
+function insert(userName) {
   insertTopNav(userName);
   insertLeftSideMenu();
   insertFooter();
-  insertCenter(role);
 }

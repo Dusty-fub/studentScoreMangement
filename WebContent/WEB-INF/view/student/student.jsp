@@ -15,15 +15,20 @@ pageEncoding="UTF-8"%>
     />
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
     <link rel="stylesheet" href="css/user.css" />
-  </head>
-  <body class="easyui-layout" style="overflow-y: hidden" scroll="no">
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="easyui/js/outlook.js"></script>
     <script type="text/javascript" src="js/studentMenu.js"></script>
+  </head>
+  <body class="easyui-layout" style="overflow-y: hidden" scroll="no">
+    <div id="mainPanel" region="center">
+      <div id="tabs" class="easyui-tabs" fit="true" border="false">
+        <jsp:include page="/WEB-INF/view/student/welcome.jsp" />
+      </div>
+    </div>
     <script src="js/user.js"></script>
     <script>
-      insert("${user.name}", "student");
+      insert("${user.name}");
     </script>
   </body>
 </html>
