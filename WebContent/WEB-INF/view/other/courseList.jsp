@@ -11,11 +11,12 @@ pageEncoding="UTF-8"%>
       href="easyui/themes/default/easyui.css"
     />
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
-    <link rel="stylesheet" type="text/css" href="easyui/css/demo.css" />
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    <script src="easyui/themes/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="easyui/js/validateExtends.js"></script>
-    <script src="js/pagination.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <script src="js/list.js"></script>
     <script type="text/javascript">
       $(function () {
         let initDataGridOptions = {
@@ -46,34 +47,56 @@ pageEncoding="UTF-8"%>
         let showAddCoursePanel = function () {
           $("#addDialog").dialog("open");
         };
+
+        function confirmDeleteCourse(result) {
+          if (result) {
+            let ajaxs = $("#dataList")
+              .datagrid("getChecked")
+              .map((course) => {
+                return $.ajax({
+                  type: "post",
+                  url: "CourseServlet?method=DeleteCourse",
+                  data: { courseid: course.id },
+                });
+              });
+
+            $.when(...ajaxs).done(function (msg) {
+              let batchDeleteMsg = true;
+              if (msg.length) {
+                for (let i = 0; i < msg.length - 1; i++) {
+                  if (msg[i] !== "success") {
+                    batchDeleteMsg = false;
+                  }
+                }
+              } else {
+                batchDeleteMsg = false;
+              }
+
+              if (msg == "success") {
+                $.messager.alert("消息提醒", "删除成功!", "info");
+                $("#dataList").datagrid("reload");
+              } else if (batchDeleteMsg) {
+                $.messager.alert("消息提醒", "删除成功!", "info");
+                $("#dataList").datagrid("reload");
+              } else {
+                $.messager.alert("消息提醒", "删除失败!", "warning");
+                return;
+              }
+            });
+          }
+        }
+
         let removeCourse = function () {
           var selectRow = $("#dataList").datagrid("getSelected");
           if (selectRow == null) {
             $.messager.alert("消息提醒", "请选择数据进行删除!", "warning");
           } else {
             var courseid = selectRow.id;
+
             $.messager.confirm(
               "消息提醒",
               "将删除与课程相关的所有数据，确认继续？",
-              function (r) {
-                if (r) {
-                  $.ajax({
-                    type: "post",
-                    url: "CourseServlet?method=DeleteCourse",
-                    data: { courseid: courseid },
-                    success: function (msg) {
-                      if (msg == "success") {
-                        $.messager.alert("消息提醒", "删除成功!", "info");
-                        //刷新表格
-                        $("#dataList").datagrid("reload");
-                      } else {
-                        $.messager.alert("消息提醒", "删除失败!", "warning");
-                        return;
-                      }
-                    },
-                  });
-                }
-              }
+              confirmDeleteCourse
             );
           }
         };
@@ -147,9 +170,8 @@ pageEncoding="UTF-8"%>
     </script>
   </head>
   <body>
-    <!-- 数据列表 -->
     <table id="dataList" cellspacing="0" cellpadding="0"></table>
-    <!-- 工具栏 -->
+
     <div id="toolbar">
       <div style="float: left">
         <a
@@ -167,8 +189,9 @@ pageEncoding="UTF-8"%>
           href="javascript:;"
           class="easyui-linkbutton"
           data-options="iconCls:'icon-some-delete',plain:true"
-          >删除</a
         >
+          删除
+        </a>
       </div>
     </div>
 

@@ -11,12 +11,13 @@ pageEncoding="UTF-8"%>
       href="easyui/themes/default/easyui.css"
     />
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
-    <link rel="stylesheet" type="text/css" href="easyui/css/demo.css" />
-    <link rel="stylesheet" href="css/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" href="css/list.css" />
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    <script src="easyui/themes/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="easyui/js/validateExtends.js"></script>
-    <script src="js/pagination.js"></script>
+    <script src="js/list.js"></script>
     <script type="text/javascript">
       $(function () {
         var table;
@@ -792,16 +793,14 @@ pageEncoding="UTF-8"%>
           position: absolute;
           margin-left: 560px;
           width: 250px;
-          height: 300px;
-          border: 1px solid #eef4ff;
+          height: 200px;
         "
       >
         <img
           id="edit_photo"
           alt="照片"
-          style="max-width: 200px; max-height: 400px"
+          style="max-width: 200px; max-height: 200px"
           title="照片"
-          src=""
         />
       </div>
       <form id="editForm" method="post">

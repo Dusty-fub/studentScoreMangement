@@ -11,12 +11,15 @@ pageEncoding="UTF-8"%>
       href="easyui/themes/default/easyui.css"
     />
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
-    <link rel="stylesheet" type="text/css" href="easyui/css/demo.css" />
-    <link rel="stylesheet" href="css/pagination.css" />
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    <script src="easyui/themes/locale/easyui-lang-zh_CN.js"></script>
+
     <script type="text/javascript" src="easyui/js/validateExtends.js"></script>
-    <script src="js/pagination.js"></script>
+
+    <script src="js/list.js"></script>
+    <link rel="stylesheet" href="css/list.css" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <script type="text/javascript">
       $(function () {
         let initDataGridOptions = {
@@ -71,25 +74,19 @@ pageEncoding="UTF-8"%>
           ],
           toolbar: "#toolbar",
         };
-        $("#dataList").datagrid(initDataGridOptions);
 
-        $("#dataList").datagrid("getPager").pagination(paginationOptions);
-
-        //设置工具类按钮
-        $("#add").click(function () {
+        function addStudent() {
           $("#addDialog").dialog("open");
-        });
-        //修改
-        $("#edit").click(function () {
+        }
+        function modifyStudentInfo() {
           var selectRows = $("#dataList").datagrid("getSelections");
           if (selectRows.length != 1) {
             $.messager.alert("消息提醒", "请选择一条数据进行操作!", "warning");
           } else {
             $("#editDialog").dialog("open");
           }
-        });
-        //删除
-        $("#delete").click(function () {
+        }
+        function removeStudent() {
           var selectRows = $("#dataList").datagrid("getSelections");
           var selectLength = selectRows.length;
           if (selectLength == 0) {
@@ -128,7 +125,13 @@ pageEncoding="UTF-8"%>
               }
             );
           }
-        });
+        }
+
+        $("#dataList").datagrid(initDataGridOptions);
+        $("#dataList").datagrid("getPager").pagination(paginationOptions);
+        $("#add").click(addStudent);
+        $("#edit").click(modifyStudentInfo);
+        $("#delete").click(removeStudent);
 
         //年级下拉框
         $("#gradeList").combobox({
@@ -429,8 +432,9 @@ pageEncoding="UTF-8"%>
           href="javascript:;"
           class="easyui-linkbutton"
           data-options="iconCls:'icon-add',plain:true"
-          >添加</a
         >
+          添加
+        </a>
       </div>
       <div style="float: left" class="datagrid-btn-separator"></div>
       <div style="float: left">

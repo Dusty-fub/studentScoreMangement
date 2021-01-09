@@ -11,15 +11,16 @@ pageEncoding="UTF-8"%>
       href="easyui/themes/default/easyui.css"
     />
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
-    <link rel="stylesheet" type="text/css" href="easyui/css/demo.css" />
-    <link rel="stylesheet" href="css/pagination.css" />
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
     <script src="easyui/themes/locale/easyui-lang-zh_CN.js"></script>
-    <script src="js/pagination.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" href="css/list.css" />
+    <script src="js/list.js"></script>
+
     <script type="text/javascript">
       $(function () {
-        //datagrid初始化
         $("#dataList").datagrid({
           title: "考试列表",
           iconCls: "icon-more", //图标
@@ -162,7 +163,6 @@ pageEncoding="UTF-8"%>
               dataType: "json",
               async: false,
               success: function (result) {
-                console.log(result);
                 var columns = [];
                 $.each(result, function (i, course) {
                   var column = {};
@@ -171,8 +171,7 @@ pageEncoding="UTF-8"%>
                   column["width"] = 70;
                   column["resizable"] = false;
                   column["sortable"] = true;
-
-                  columns.push(column); //当需要formatter的时候自己添加就可以了,原理就是拼接字符串.
+                  columns.push(column);
                 });
 
                 if (exam.type == 1) {
@@ -191,7 +190,10 @@ pageEncoding="UTF-8"%>
                   };
                   $("#escoreClazzList").combobox("reload");
                 } else {
-                  $("#escoreClazzList").combobox("readonly", true);
+                  $("#escoreClazzList").textbox({
+                    readonly: true,
+                    value: data.clazzid + "班",
+                  });
                 }
 
                 $("#escoreList").datagrid({

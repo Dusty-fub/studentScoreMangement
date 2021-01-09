@@ -11,12 +11,13 @@ pageEncoding="UTF-8"%>
       href="easyui/themes/default/easyui.css"
     />
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
-    <link rel="stylesheet" type="text/css" href="easyui/css/demo.css" />
-    <link rel="stylesheet" href="css/pagination.css" />
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
+    <script src="easyui/themes/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="easyui/js/validateExtends.js"></script>
-    <script src="js/pagination.js"></script>
+    <script src="js/list.js"></script>
+    <link rel="stylesheet" href="css/list.css" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
     <script type="text/javascript">
       $(function () {
         let deleteClass = function () {

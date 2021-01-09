@@ -19,14 +19,12 @@ let paginationOptions = {
   displayMsg: "当前显示 {from} - {to} 条记录   共 {total} 条记录",
 };
 
-
 function mixinDataGridOptions(dataGridOptions) {
   for (let key in initCommonOptions) {
     dataGridOptions[key] = initCommonOptions[key];
   }
   return dataGridOptions;
 }
-
 
 function paginationHoverTip() {
   $(".pagination-page-list").prop("title", "每页显示记录条数");

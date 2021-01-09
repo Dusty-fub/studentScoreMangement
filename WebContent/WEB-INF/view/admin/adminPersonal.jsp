@@ -12,7 +12,7 @@ prefix="c" %>
       href="easyui/themes/default/easyui.css"
     />
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
-    <link rel="stylesheet" type="text/css" href="easyui/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
 
     <style type="text/css">
       .table th {
@@ -50,6 +50,7 @@ prefix="c" %>
       .table-striped tbody > tr:nth-child(odd) > th {
         background-color: #f9f9f9;
       }
+
     </style>
 
     <script type="text/javascript" src="easyui/jquery.min.js"></script>

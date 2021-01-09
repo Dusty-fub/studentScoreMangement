@@ -31,7 +31,7 @@ span.head {
   transition : font-size 250ms;
 }
 
-/* 安全退出 hover */
+/* 顶部导航 安全退出 hover */
 #logout:hover {
   font-size : 13px;
   color : #FED227;
@@ -106,18 +106,8 @@ span.head {
 
 /* main */
 #mainPanel {
-  border : none;
   background : #EEEEEE;
   overflow-y : hidden;
-}
-
-/* main tab标题 */
-ul.tabs li .tabs-inner {
-  border : none;
-}
-
-.tabs-wrap > .tabs {
-  border-color : transparent;
 }
 
 /* 左部边栏 */

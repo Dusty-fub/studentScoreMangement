@@ -1,8 +1,3 @@
-/* header body */
-.panel.datagrid.easyui-fluid > .panel-header, .panel.datagrid.easyui-fluid > .panel-body {
-  border : none;
-}
-
 /* 表中 行 */
 .datagrid-view .datagrid-btable tbody tr {
   cursor : pointer;
@@ -25,11 +20,3 @@
 .pagination-page-list {
   cursor : pointer;
 }
-
-/* 成绩登记 科目列 */
-/* #regEscoreToolbar + .datagrid-view
-  .datagrid-header-inner
-  .datagrid-htable
-  .datagrid-cell {
-  width : 170px;
-} */
