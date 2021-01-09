@@ -63,7 +63,7 @@ pageEncoding="UTF-8"%>
           method: "post",
           url: "ClazzServlet?method=ClazzDetailList&t=" + new Date().getTime(),
           idField: "id",
-          singleSelect: false,
+          singleSelect: true,
           pagination: true, //分页控件
           rownumbers: true, //行号
           sortName: "id",
@@ -208,8 +208,9 @@ pageEncoding="UTF-8"%>
           href="javascript:;"
           class="easyui-linkbutton"
           data-options="iconCls:'icon-add',plain:true"
-          >添加</a
         >
+          添加
+        </a>
       </div>
       <div style="float: left" class="datagrid-btn-separator"></div>
       <div style="float: left; margin-right: 10px">
@@ -218,8 +219,9 @@ pageEncoding="UTF-8"%>
           href="javascript:;"
           class="easyui-linkbutton"
           data-options="iconCls:'icon-some-delete',plain:true"
-          >删除</a
         >
+          删除
+        </a>
       </div>
 
       <div style="margin: 0 10px 0 10px">

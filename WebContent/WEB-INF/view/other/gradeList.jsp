@@ -30,7 +30,7 @@ pageEncoding="UTF-8"%>
             "GradeServlet?method=GradeList&course=course&t=" +
             new Date().getTime(),
           idField: "id",
-          singleSelect: false,
+          singleSelect: true,
           pagination: false,
           rownumbers: true, //是否显示行号
           sortName: "id",

@@ -20,3 +20,8 @@
 .pagination-page-list {
   cursor : pointer;
 }
+
+/* 登记成绩 成绩input */
+input.score {
+  width : 130px;
+}

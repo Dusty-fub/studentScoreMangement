@@ -91,8 +91,6 @@ pageEncoding="UTF-8"%>
           if (selectRow == null) {
             $.messager.alert("消息提醒", "请选择数据进行删除!", "warning");
           } else {
-            var courseid = selectRow.id;
-
             $.messager.confirm(
               "消息提醒",
               "将删除与课程相关的所有数据，确认继续？",
@@ -161,10 +159,8 @@ pageEncoding="UTF-8"%>
         };
 
         $("#dataList").datagrid(initDataGridOptions);
-
-        $("#addDialog").dialog(addCourseOptions);
-
         $("#add").click(showAddCoursePanel);
+        $("#addDialog").dialog(addCourseOptions);
         $("#delete").click(removeCourse);
       });
     </script>

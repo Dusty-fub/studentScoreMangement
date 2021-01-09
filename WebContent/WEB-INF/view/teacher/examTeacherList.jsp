@@ -16,6 +16,7 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
     <script src="easyui/themes/locale/easyui-lang-zh_CN.js"></script>
+    <script src="easyui/js/validateExtends.js"></script>
     <script src="js/list.js"></script>
     <script type="text/javascript">
       //验证只能为数字
@@ -118,68 +119,19 @@ pageEncoding="UTF-8"%>
           var exam = $("#dataList").datagrid("getSelected");
 
           if (exam == null) {
-            $.messager.alert("消息提醒", "请选择考试进行统计!", "warning");
+            $.messager.alert("消息提醒", "请选择考试进行登记!", "warning");
           } else {
             if (exam.type == 2) {
               $("#regClazzList").combobox("readonly", true);
               $("#regCourseList").combobox("readonly", true);
-
-              setTimeout(function () {
-                var data = {
-                  id: exam.id,
-                  gradeid: exam.gradeid,
-                  clazzid: exam.clazzid,
-                  courseid: exam.courseid,
-                  type: "2",
-                };
-                //动态显示该次考试的科目
-                $.ajax({
-                  type: "post",
-                  url: "ScoreServlet?method=ColumnList",
-                  data: data,
-                  dataType: "json",
-                  async: false,
-                  success: function (result) {
-                    var columns = [];
-                    $.each(result, function (i, course) {
-                      var column = {};
-                      column["field"] = "course" + course.id;
-                      column["title"] = course.name;
-                      column["width"] = 150;
-                      column["align"] = "center";
-                      column["resizable"] = false;
-                      column["sortable"] = true;
-                      var escoreid = "escoreid" + course.id;
-                      column["formatter"] = function (value, row, index) {
-                        return (
-                          "<input type='text' maxlength='3' onblur='scoreBlur(this)' id='" +
-                          row[escoreid] +
-                          "' class='score' value=" +
-                          value +
-                          ">"
-                        );
-                      };
-
-                      columns.push(column);
-                    });
-
-                    $("#regEscoreList").datagrid({
-                      columns: [columns],
-                    });
-                  },
-                });
-                //加载数据
-                setTimeout(function () {
-                  $("#regEscoreList").datagrid("options").url =
-                    "ScoreServlet?method=ScoreList&t=" + new Date().getTime();
-                  $("#regEscoreList").datagrid("options").queryParams = data;
-                  $("#regEscoreList").datagrid("reload");
-                }, 30);
-
-                setTimeout(function () {
-                  $("#regEscoreDialog").dialog("open");
-                }, 80);
-              }, 100);
+              var data = {
+                id: exam.id,
+                gradeid: exam.gradeid,
+                clazzid: exam.clazzid,
+                courseid: exam.courseid,
+                type: "2",
+              };
+              showRegStudentScoreInput(data);
             } else {
               $("#regClazzList").combobox("readonly", false);
               $("#regCourseList").combobox("readonly", false);
@@ -221,7 +173,6 @@ pageEncoding="UTF-8"%>
                   var column = {};
                   column["field"] = "course" + course.id;
                   column["title"] = course.name;
-                  column["width"] = 140;
                   column["align"] = "center";
                   column["resizable"] = false;
                   column["sortable"] = true;
@@ -551,6 +502,58 @@ pageEncoding="UTF-8"%>
           });
         });
 
+        function loadRegStudentScoreInput(result) {
+          var columns = [];
+          $.each(result, function (i, course) {
+            var column = {};
+            column["field"] = "course" + course.id;
+            column["title"] = course.name;
+            column["align"] = "center";
+            column["resizable"] = false;
+            column["sortable"] = true;
+            var escoreid = "escoreid" + course.id;
+            column["formatter"] = function (value, row, index) {
+              return (
+                "<input type='text' maxlength='3' onblur='scoreBlur(this)' id='" +
+                row[escoreid] +
+                "' class='score easyui-validatebox' value=" +
+                value +
+                ' validType="number"' +
+                ">"
+              );
+            };
+
+            columns.push(column);
+          });
+
+          $("#regEscoreList").datagrid({
+            columns: [columns],
+          });
+        }
+
+        function showRegStudentScoreInput(data) {
+          setTimeout(function () {
+            $.ajax({
+              type: "post",
+              url: "ScoreServlet?method=ColumnList",
+              data: data,
+              dataType: "json",
+              async: false,
+              success: loadRegStudentScoreInput,
+            });
+            setTimeout(function () {
+              $("#regEscoreList").datagrid("options").url =
+                "ScoreServlet?method=ScoreList&t=" + new Date().getTime();
+              $("#regEscoreList").datagrid("options").queryParams = data;
+              $("#regEscoreList").datagrid("reload");
+            }, 30);
+
+            setTimeout(function () {
+              $("#regEscoreDialog").dialog("open");
+            }, 80);
+          }, 100);
+        }
+
         //班级下拉框
         $("#regClazzList").combobox({
           width: "150",
@@ -594,66 +597,17 @@ pageEncoding="UTF-8"%>
           editable: false, //不可编辑
           method: "post",
           onChange: function (newValue, oldValue) {
-            var exam = $("#dataList").datagrid("getSelected");
-
             if (!(newValue == null || newValue == "" || newValue == 0)) {
-              setTimeout(function () {
-                var clazzid = $("#regClazzList").combobox("getValue");
-
-                var data = {
-                  id: exam.id,
-                  gradeid: exam.gradeid,
-                  clazzid: clazzid,
-                  courseid: newValue,
-                  type: "2",
-                };
-                //动态显示该次考试的科目
-                $.ajax({
-                  type: "post",
-                  url: "ScoreServlet?method=ColumnList",
-                  data: data,
-                  dataType: "json",
-                  async: false,
-                  success: function (result) {
-                    var columns = [];
-                    $.each(result, function (i, course) {
-                      var column = {};
-                      column["field"] = "course" + course.id;
-                      column["title"] = course.name;
-                      column["width"] = 150;
-                      column["align"] = "center";
-                      column["resizable"] = false;
-                      column["sortable"] = true;
-                      var escoreid = "escoreid" + course.id;
-                      column["formatter"] = function (value, row, index) {
-                        return (
-                          "<input type='text' maxlength='3' onblur='scoreBlur(this)' id='" +
-                          row[escoreid] +
-                          "' class='score' value=" +
-                          value +
-                          ">"
-                        );
-                      };
-
-                      columns.push(column);
-                    });
-
-                    $("#regEscoreList").datagrid({
-                      columns: [columns],
-                    });
-                  },
-                });
-                setTimeout(function () {
-                  $("#regEscoreList").datagrid("options").url =
-                    "ScoreServlet?method=ScoreList&t=" + new Date().getTime();
-                  $("#regEscoreList").datagrid("options").queryParams = data;
-                  $("#regEscoreList").datagrid("reload");
-                }, 30);
-
-                setTimeout(function () {
-                  $("#regEscoreDialog").dialog("open");
-                }, 80);
-              }, 100);
+              var exam = $("#dataList").datagrid("getSelected");
+              var clazzid = $("#regClazzList").combobox("getValue");
+              var data = {
+                id: exam.id,
+                gradeid: exam.gradeid,
+                clazzid: clazzid,
+                courseid: newValue,
+                type: "2",
+              };
+              showRegStudentScoreInput(data);
             }
           },
           onLoadSuccess: function () {
