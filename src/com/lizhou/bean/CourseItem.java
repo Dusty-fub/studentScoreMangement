@@ -1,27 +1,22 @@
 package com.lizhou.bean;
 
-/**
- * 教师与课程的具体对应
- * @author bojiangzhou
- *
- */
 public class CourseItem {
-	
-	private Clazz clazz; //班级
-	
-	private int clazzid; //班级ID
-	
-	private Grade grade; //年级
-	
-	private int gradeid; //年级ID
-	
-	private Course course; //课程
-	
-	private int courseid; //课程ID
-	
-	private Teacher teacher; //教师
-	
-	private int teacherid; //教师ID
+
+	private Clazz clazz; // 班级
+
+	private int clazzid; // 班级ID
+
+	private Grade grade; // 年级
+
+	private int gradeid; // 年级ID
+
+	private Course course; // 课程
+
+	private int courseid; // 课程ID
+
+	private Teacher teacher; // 教师
+
+	private int teacherid; // 教师ID
 
 	public Clazz getClazz() {
 		return clazz;
@@ -87,5 +82,4 @@ public class CourseItem {
 		this.teacherid = teacherid;
 	}
 
-	
 }

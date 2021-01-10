@@ -3,22 +3,17 @@ package com.lizhou.bean;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * 年级类
- * @author bojiangzhou
- *
- */
 public class Grade {
-	
-	private int id; //ID
-	
-	private String name; //名称
-	
-	private List<Clazz> clazzList = new LinkedList<>(); //年级下的班级列表
-	
-	private List<Course> courseList = new LinkedList<>(); //本年级的课程
-	
-	private List<Student> studentList = new LinkedList<>(); //年级下的学
+
+	private int id; // ID
+
+	private String name; // 名称
+
+	private List<Clazz> clazzList = new LinkedList<>(); // 年级下的班级列表
+
+	private List<Course> courseList = new LinkedList<>(); // 本年级的课程
+
+	private List<Student> studentList = new LinkedList<>(); // 年级下的学
 
 	public int getId() {
 		return id;
@@ -59,5 +54,5 @@ public class Grade {
 	public void setStudentList(List<Student> studentList) {
 		this.studentList = studentList;
 	}
-	
+
 }

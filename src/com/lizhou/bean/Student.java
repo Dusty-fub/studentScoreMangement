@@ -2,35 +2,30 @@ package com.lizhou.bean;
 
 import java.util.List;
 
-/**
- * 学生类
- * @author bojiangzhou
- *
- */
 public class Student {
-	
-	private int id; //ID
-	
-	private String number; //学号
-	
-	private String name; //姓名
-	
-	private String sex; //性别
-	
-	private String phone; //电话
-	
-	private String qq; //QQ
-	
-	private Clazz clazz; //班级
-	
-	private int clazzid; //班级ID
-	
-	private Grade grade; //年级
-	
-	private int gradeid; //年级ID
-	
-	private List<EScore> scoreList; //成绩集合
-	
+
+	private int id; // ID
+
+	private String number; // 学号
+
+	private String name; // 姓名
+
+	private String sex; // 性别
+
+	private String phone; // 电话
+
+	private String qq; // QQ
+
+	private Clazz clazz; // 班级
+
+	private int clazzid; // 班级ID
+
+	private Grade grade; // 年级
+
+	private int gradeid; // 年级ID
+
+	private List<EScore> scoreList; // 成绩集合
+
 	public int getId() {
 		return id;
 	}

@@ -15,15 +15,5 @@ import com.lizhou.bean.Student;
 import com.lizhou.dao.inter.SystemDaoInter;
 import com.lizhou.tools.MysqlTool;
 
-/**
- * 系统数据层
- * @author bojiangzhou
- *
- */
 public class SystemDaoImpl extends BaseDaoImpl implements SystemDaoInter {
-
-	
-	
-	
-	
 }

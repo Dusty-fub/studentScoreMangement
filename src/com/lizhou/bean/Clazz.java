@@ -3,23 +3,18 @@ package com.lizhou.bean;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * 班级类
- * @author bojiangzhou
- *
- */
 public class Clazz {
-	
-	private int id; //ID
-	
-	private String name; //名称
-	
-	private Grade grade; //班级所属年级
-	
-	private int gradeid; //年级ID
-	
+
+	private int id; // ID
+
+	private String name; // 名称
+
+	private Grade grade; // 班级所属年级
+
+	private int gradeid; // 年级ID
+
 	private List<Student> studentList = new LinkedList<>();
-	
+
 	public int getId() {
 		return id;
 	}
@@ -62,5 +57,5 @@ public class Clazz {
 	public void setStudentList(List<Student> studentList) {
 		this.studentList = studentList;
 	}
-	
+
 }

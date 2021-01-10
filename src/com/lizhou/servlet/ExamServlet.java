@@ -30,7 +30,6 @@ import net.sf.json.JSONObject;
 
 /**
  * 考试类Servlet
- * @author bojiangzhou
  *
  */
 public class ExamServlet extends HttpServlet {

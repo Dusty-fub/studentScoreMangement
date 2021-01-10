@@ -1,31 +1,26 @@
 package com.lizhou.bean;
 
-/**
- * 考试成绩类
- * @author bojiangzhou
- *
- */
 public class EScore {
-	
-	private int id; //ID
-	
-	private Exam exam; //考试
-	
-	private int examid; //考试ID
-	
-	private Clazz clazz; //考试班级
-	
-	private int clazzid; //班级ID
-	
-	private Course course; //考试科目
-	
-	private int courseid; //科目ID
-	
-	private Student student; //考试学生
-	
-	private int studentid; //学生ID
-	
-	private int score; //考试成绩
+
+	private int id; // ID
+
+	private Exam exam; // 考试
+
+	private int examid; // 考试ID
+
+	private Clazz clazz; // 考试班级
+
+	private int clazzid; // 班级ID
+
+	private Course course; // 考试科目
+
+	private int courseid; // 科目ID
+
+	private Student student; // 考试学生
+
+	private int studentid; // 学生ID
+
+	private int score; // 考试成绩
 
 	public int getId() {
 		return id;

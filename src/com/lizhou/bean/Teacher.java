@@ -3,28 +3,23 @@ package com.lizhou.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 教师类
- * @author bojiangzhou
- *
- */
 public class Teacher {
-	
-	private int id; //ID
-	
-	private String number; //工号
-	
-	private String name; //姓名
-	
-	private String sex; //性别
-	
-	private String phone; //电话
-	
-	private String qq; //QQ
-	
+
+	private int id; // ID
+
+	private String number; // 工号
+
+	private String name; // 姓名
+
+	private String sex; // 性别
+
+	private String phone; // 电话
+
+	private String qq; // QQ
+
 	private List<CourseItem> courseList = new ArrayList<>();
-	
-	private String[] course = new String[]{}; //课程集合
+
+	private String[] course = new String[] {}; // 课程集合
 
 	public int getId() {
 		return id;
@@ -77,7 +72,7 @@ public class Teacher {
 	public List<CourseItem> getCourseList() {
 		return courseList;
 	}
-	
+
 	public void setCourseList(List<CourseItem> courseList) {
 		this.courseList = courseList;
 	}
@@ -89,5 +84,5 @@ public class Teacher {
 	public void setCourse(String[] course) {
 		this.course = course;
 	}
-	
+
 }

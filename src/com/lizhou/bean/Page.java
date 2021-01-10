@@ -1,40 +1,34 @@
 package com.lizhou.bean;
 
-/**
- * 封装分页参数
- * @author bojiangzhou
- *
- */
 public class Page {
-	
+
 	/**
 	 * 开始查询位置
 	 */
-	private int start; 
-	
+	private int start;
+
 	/**
 	 * 页码
 	 */
-	private int code; 
-	
+	private int code;
+
 	/**
 	 * 每页记录数
 	 */
 	private int size;
-	
 
 	public Page() {
-		
+
 	}
-	
+
 	public Page(int code, int size) {
 		this.code = code;
 		this.size = size;
-		this.start = (code-1) * size;
+		this.start = (code - 1) * size;
 	}
-	
+
 	public int getStart() {
-		this.start = (code-1) * size;
+		this.start = (code - 1) * size;
 		return start;
 	}
 
@@ -57,5 +51,5 @@ public class Page {
 	public void setSize(int size) {
 		this.size = size;
 	}
-	
+
 }

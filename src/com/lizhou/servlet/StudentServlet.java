@@ -23,11 +23,6 @@ import com.lizhou.service.StudentService;
 import com.lizhou.tools.StringTool;
 
 
-/**
- * 学生类Servlet
- * @author bojiangzhou
- *
- */
 public class StudentServlet extends HttpServlet {
 	
 	//创建服务层对象
