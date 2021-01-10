@@ -1,0 +1,57 @@
+#form > .row.cl .input-text.size-L {
+  border-radius : 5px;
+}
+
+.footer {
+  background : none;
+  border : none;
+}
+
+#vcodeImg {
+  cursor : pointer;
+}
+
+.header {
+  padding : 0;
+  background : none;
+}
+
+.header h2 {
+  color : white;
+  width : 400px;
+  height : 60px;
+  line-height : 60px;
+  margin : 0 0 0 30px;
+  padding : 0;
+}
+
+.loginWraper {
+  background : linear-gradient(-45deg, #FFFFFF, #E0ECFF, #74B8EE, #2775B6);
+  background-size : 400% 400%;
+  animation : gradient 45s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position : 0% 50%;
+  }
+  50% {
+    background-position : 100% 50%;
+  }
+  100% {
+    background-position : 0% 50%;
+  }
+}
+
+.btn-success {
+  color : #FFFFFF;
+  background-color : #57BAED;
+  border-color : #57BAED;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active {
+  color : #FFFFFF;
+  background-color : #3AACE7;
+  border-color : #3AACE7;
+  color : #FED227;
+}

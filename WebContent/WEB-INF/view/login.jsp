@@ -28,6 +28,7 @@ pageEncoding="UTF-8"%>
       href="easyui/themes/default/easyui.css"
     />
     <link rel="stylesheet" type="text/css" href="easyui/themes/icon.css" />
+    <link rel="stylesheet" href="css/login.css" />
 
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="h-ui/js/H-ui.js"></script>
@@ -38,34 +39,16 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
     <title>登录|学生成绩管理系统</title>
     <meta name="keywords" content="学生成绩管理系统" />
-    <style>
-      #vcodeImg {
-        cursor: pointer;
-      }
-    </style>
   </head>
   <body>
-    <div class="header" style="padding: 0">
-      <h2
-        style="
-          color: white;
-          width: 400px;
-          height: 60px;
-          line-height: 60px;
-          margin: 0 0 0 30px;
-          padding: 0;
-        "
-      >
-        学生成绩管理系统
-      </h2>
-    </div>
+    <div class="header"><h2>学生成绩管理系统</h2></div>
     <div class="loginWraper">
       <div id="loginform" class="loginBox">
         <form id="form" class="form form-horizontal" method="post">
           <div class="row cl">
-            <label class="form-label col-3"
-              ><i class="Hui-iconfont">&#xe60d;</i></label
-            >
+            <label class="form-label col-3">
+              <i class="Hui-iconfont">&#xe60d;</i>
+            </label>
             <div class="formControls col-8">
               <input
                 name="account"
@@ -75,19 +58,22 @@ pageEncoding="UTF-8"%>
               />
             </div>
           </div>
+
           <div class="row cl">
-            <label class="form-label col-3"
-              ><i class="Hui-iconfont">&#xe60e;</i></label
-            >
+            <label class="form-label col-3">
+              <i class="Hui-iconfont">&#xe60e;</i>
+            </label>
             <div class="formControls col-8">
               <input
                 name="password"
                 type="password"
                 placeholder="密码"
+                maxlength="16"
                 class="input-text size-L"
               />
             </div>
           </div>
+
           <div class="row cl">
             <div class="formControls col-8 col-offset-3">
               <input
@@ -133,7 +119,7 @@ pageEncoding="UTF-8"%>
         </form>
       </div>
     </div>
-    <div class="footer">Copyright &nbsp;</div>
+    <div class="footer">Copyright &copy;</div>
     <script type="text/javascript">
       $(function () {
         //点击图片切换验证码
